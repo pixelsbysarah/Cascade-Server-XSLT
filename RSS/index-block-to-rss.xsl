@@ -132,7 +132,8 @@
 	</xsl:template>
 	
 	<!-- Override link rewriting behavior of xhtml2escapedHtml for compatiblity with RSS 2.0 -->
-	<xsl:template match="@href|@src" mode="xhtml2html"><xsl:text> </xsl:text><xsl:value-of select="local-name(.)"/>="<xsl:choose><xsl:when test="starts-with(.,$site_path)"><xsl:value-of select="concat($website_path,substring-after(.,$site_path))"/></xsl:when><xsl:otherwise>[system-asset]<xsl:value-of select="."/>[/system-asset]</xsl:otherwise></xsl:choose>"</xsl:template>
+	<xsl:template match="@href|@src" mode="xhtml2html">
+  	     <xsl:text> </xsl:text><xsl:value-of select="local-name(.)"/>="<xsl:choose><xsl:when test="starts-with(.,$site_path)"><xsl:value-of select="substring-after(.,$site_path)"/></xsl:when><xsl:otherwise>[system-asset]<xsl:value-of select="."/>[/system-asset]</xsl:otherwise></xsl:choose>"</xsl:template>
 	
 	
 	<!-- Xalan component for date conversion from CMS date format to RSS 2.0 pubDate format -->
